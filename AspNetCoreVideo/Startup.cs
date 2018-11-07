@@ -29,6 +29,7 @@ namespace AspNetCoreVideo
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             // ex 1 services.AddSingleton<IMessageService, HardCodedMessageService>();
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IMessageService, ConfigurationMessageService>();
@@ -41,12 +42,16 @@ namespace AspNetCoreVideo
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseMvcWithDefaultRoute();
+            ///app.UseStaticFiles(); used for testing serving up a static file
 
             app.Run(async (context) =>
             {
                 // ex 1 await context.Response.WriteAsync("Hello, from my World, yeah!");
                 // ex 2 var message = Configuration["Message"];
                 // ex 2 await context.Response.WriteAsync(message);
+                //throw new Exception("Fake Exception");
                 await context.Response.WriteAsync(msg.GetMessage());
             });
         }
