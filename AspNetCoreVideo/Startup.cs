@@ -43,7 +43,13 @@ namespace AspNetCoreVideo
                 app.UseDeveloperExceptionPage();
             }
             
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
             ///app.UseStaticFiles(); used for testing serving up a static file
 
             app.Run(async (context) =>
