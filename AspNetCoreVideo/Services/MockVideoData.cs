@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreVideo.Models;
+using AspNetCoreVideo.Entities;
 
 namespace AspNetCoreVideo.Services
 {
@@ -14,9 +14,9 @@ namespace AspNetCoreVideo.Services
         {
             _videos = new List<Video>
             {
-                new Video { id = 1, Title = "Shrek" },
-                new Video { id = 2, Title = "Despicable Me" },
-                new Video { id = 3, Title = "Megamind" },
+                new Video { Id = 1, GenreId = 1, Title = "Shrek" },
+                new Video { Id = 2, GenreId = 1, Title = "Despicable Me" },
+                new Video { Id = 3, GenreId = 1, Title = "Megamind" },
             };
 
         }
@@ -25,6 +25,11 @@ namespace AspNetCoreVideo.Services
         {
             //throw new NotImplementedException();
             return _videos;
+        }
+
+        public Video Get(int id)
+        {
+            return _videos.FirstOrDefault(v => v.Id.Equals(id));
         }
     }
 }

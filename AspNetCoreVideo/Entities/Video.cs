@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspNetCoreVideo.Models
+namespace AspNetCoreVideo.Entities
 {
     public class Video
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
+        public int GenreId { get; set; }
+
     }
 }
