@@ -8,11 +8,11 @@
     <table>
         @foreach (var video in Model)
         {
-            <tr>
-                <td>@video.Id</td>
-                <td>@video.Title</td>
-                <td>@video.Genre</td>
-            </tr>
+        <tr>
+            <td>@Html.ActionLink(video.Id.ToString(), "Details", new { id = video.Id })</td>
+            <td>@video.Title</td>
+            <td>@video.Genre</td>
+        </tr>
         }
     </table>
 </body>

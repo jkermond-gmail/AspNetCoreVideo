@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreVideo.Models;
 
 namespace AspNetCoreVideo.Entities
 {
@@ -9,7 +10,8 @@ namespace AspNetCoreVideo.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int GenreId { get; set; }
+        //public int GenreId { get; set; }
+        public Genres Genre { get; set; }
 
     }
 }
