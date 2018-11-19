@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using AspNetCoreVideo.Services;
 using AspNetCoreVideo.Models;
 using AspNetCoreVideo.ViewModels;
+using AspNetCoreVideo.Entities;
 
 namespace AspNetCoreVideo.Controllers
 {
@@ -60,9 +61,29 @@ namespace AspNetCoreVideo.Controllers
             }
             );
         }
-
+        [HttpGet]
         public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(VideoEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var video = new Video
+                {
+                    Title = model.Title,
+                    Genre = model.Genre
+                };
+
+                _videos.Add(video);
+
+                //return View();
+                return RedirectToAction("Details", new { id = video.Id });
+            }
+
             return View();
         }
     }
